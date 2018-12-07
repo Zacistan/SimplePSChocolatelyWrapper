@@ -40,7 +40,7 @@ function Install-ChocoPackage {
    .Notes 
     NAME: Install-ChocoPackage
     AUTHOR: Zachary Robinson
-    LASTEDIT: 2018.12.06
+    LASTEDIT: 2018.12.07
     #> 
     [CmdletBinding()]
     param(
@@ -56,15 +56,15 @@ function Install-ChocoPackage {
     if (Test-Path $Package -PathType Leaf) {
         Write-Host "Getting list of packages from $Package"
         # Split and trim are used here to ensure that any comma separated values are treated as separate packages.
-        $packages = Get-Content $Package | ForEach-Object { $_.Split(',').Trim() }
+        [string[]]$packages = Get-Content $Package | ForEach-Object { $_.Split(',').Trim() }
     }
     else {
         # Split and trim are used here to ensure that any comma separated values are treated as separate packages.
-        $packages = $Package.Split(',').Trim()
+        [string[]]$packages = $Package.Split(',').Trim()
     }
 
+    Write-Host "$(Get-Date): Beginning to install packages."
     foreach ($pack in $Packages) {
-        Write-Host "$(Get-Date): Beginning to install packages."
         try {
             Write-Verbose "$(Get-Date): Installing package $pack..."
             & choco install $pack
