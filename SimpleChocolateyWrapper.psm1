@@ -60,7 +60,7 @@ function Install-ChocoPackage {
     }
     else {
         # Split and trim are used here to ensure that any comma separated values are treated as separate packages.
-        $package = $Package.Split(',').Trim()
+        $packages = $Package.Split(',').Trim()
     }
 
     foreach ($pack in $Packages) {
