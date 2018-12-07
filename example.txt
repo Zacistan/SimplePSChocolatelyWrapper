@@ -1,0 +1,13 @@
+git
+python3
+vscode
+steam
+spotify
+keepass
+greenshot
+sql-server-management-studio
+adobereader
+googlechrome
+7zip
+putty
+mremoteng
